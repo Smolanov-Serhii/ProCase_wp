@@ -1,0 +1,233 @@
+html{
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  font-family: 'Montserrat', sans-serif;
+}
+pre{
+  white-space: break-spaces;
+}
+p, pre{
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5em;
+  margin-bottom: 0.9em;
+  @media all and (max-width: 1200px) {
+    font-size: 17px;
+  }
+  @media all and (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 15px;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+h1{
+  font-weight: 600;
+  font-size: 48px;
+  @media all and (max-width: 1200px) {
+    font-size: 40px;
+  }
+  @media all and (max-width: 1024px) {
+    font-size: 32px;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 24px;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 16px;
+  }
+}
+ul,ol{
+  list-style: disc;
+  margin-left: 1.2em;
+  margin-bottom: 1.2em;
+  li{
+    margin-bottom: 0.6em;
+  }
+}
+strong, b{
+  font-weight: 600;
+}
+em{
+  font-style: italic;
+}
+h2{
+  font-weight: 600;
+  font-size: 42px;
+  @media all and (max-width: 1200px) {
+    font-size: 34px;
+  }
+  @media all and (max-width: 1024px) {
+    font-size: 26px;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 18px;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 10px;
+  }
+}
+h3{
+  font-weight: 600;
+  font-size: 36px;
+}
+h4{
+  font-weight: 600;
+  font-size: 30px;
+}
+h5{
+  font-weight: 600;
+  font-size: 24px;
+}
+h6{
+  font-weight: 600;
+  font-size: 18px;
+}
+a.button{
+  background: linear-gradient(180deg,#d62d30 0,#601112 100%) !important;
+  border: 1px solid #d62d30!important;
+  font-weight: 600!important;
+  font-size: 14px!important;
+  line-height: 17px!important;
+  text-transform: uppercase;
+  color: #fff!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: .3s;
+  padding: 14px 30px;
+  &:hover{
+    background-color: #FFD7D7!important;
+  }
+}
+a{
+  color: #FFFFFF;
+}
+table{
+  th{
+    font-weight: 600;
+    background-color: #FFD7D7;
+  }
+  td{
+    font-weight: 400;
+  }
+  th, td{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+    color: #000000;
+    border-top: 1px solid #FFD7D7;
+    padding: 10px;
+    &.actions{
+      text-align: left;
+      .button{
+        padding: 14px 30px;
+      }
+    }
+  }
+  tr{
+    border: 1px solid #FFD7D7;
+    td, th{
+      padding: 10px;
+    }
+    &:nth-child(even){
+      background-color: #FCEEEE;
+    }
+  }
+}
+input[type="button"]{
+  color: white!important;
+}
+input[type="number"]{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: left;
+  color: black;
+  padding: 10px 20px 10px 20px;
+  background: #FFFFFF;
+  border: 0.35px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  margin: 13px 0;
+  min-width: 7em;
+}
+.number {
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.number input[type="number"] {
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+.number input[type="number"]::-webkit-outer-spin-button,
+.number input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+.number-minus {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  width: 30px;
+  padding: 0;
+  display: block;
+  text-align: center;
+  border: none;
+  border-right: 1px solid #ddd;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 0;
+}
+.number-plus {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  width: 30px;
+  padding: 0;
+  display: block;
+  text-align: center;
+  border: none;
+  border-left: 1px solid #ddd;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 0;
+}
+button{
+  background: linear-gradient(180deg,#d62d30 0,#601112 100%);
+  border: 1px solid #d62d30;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: .3s;
+  padding: 14px 30px;
+  &:hover{
+    background-color: #FFD7D7;
+  }
+}

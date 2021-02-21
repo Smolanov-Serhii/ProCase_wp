@@ -50,7 +50,9 @@ if ( ! function_exists( 'procase_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'procase' ),
+				'menu-info' => esc_html__( 'Меню информации', 'procase' ),
+				'menu-page' => esc_html__( 'Меню страниц', 'procase' ),
+				'menu-footer' => esc_html__( 'Меню подвал', 'procase' ),
 			)
 		);
 
@@ -140,9 +142,9 @@ add_action( 'widgets_init', 'procase_widgets_init' );
  * Enqueue scripts and styles.
  */
 function procase_scripts() {
-	wp_enqueue_style( 'procase-style', get_stylesheet_uri(), array(), _S_VERSION );
+    wp_enqueue_style( 'procase-style', get_template_directory_uri() . '/dist/css/style.css', array(), _S_VERSION );
 	wp_style_add_data( 'procase-style', 'rtl', 'replace' );
-
+    wp_enqueue_script('newscript', get_template_directory_uri() . '/dist/js/common.js');
 	wp_enqueue_script( 'procase-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -178,3 +180,141 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+add_action( 'init', 'register_post_types' );
+function register_post_types(){
+
+    register_post_type( 'uses', [
+        'label'  => null,
+        'labels' => [
+            'name'               => 'Применение', // основное название для типа записи
+            'singular_name'      => 'Применение', // название для одной записи этого типа
+            'add_new'            => 'Добавить применение', // для добавления новой записи
+            'add_new_item'       => 'Добавление применения', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item'          => 'Редактирование применения', // для редактирования типа записи
+            'new_item'           => 'Новое применение', // текст новой записи
+            'view_item'          => 'Смотреть применение', // для просмотра записи этого типа.
+            'search_items'       => 'Искать применение', // для поиска по этим типам записи
+            'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
+            'parent_item_colon'  => '', // для родителей (у древовидных типов)
+            'menu_name'          => 'Применение', // название меню
+        ],
+        'description'         => '',
+        'public'              => true,
+        // 'publicly_queryable'  => null, // зависит от public
+        // 'exclude_from_search' => null, // зависит от public
+        // 'show_ui'             => null, // зависит от public
+        // 'show_in_nav_menus'   => null, // зависит от public
+        'show_in_menu'        => null, // показывать ли в меню адмнки
+        // 'show_in_admin_bar'   => null, // зависит от show_in_menu
+        'show_in_rest'        => null, // добавить в REST API. C WP 4.7
+        'rest_base'           => null, // $post_type. C WP 4.7
+        'menu_position'       => null,
+        'menu_icon'           => 'dashicons-businessman',
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+        'hierarchical'        => false,
+        'supports'            => [ 'title', 'editor','thumbnail'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'taxonomies'          => [],
+        'has_archive'         => true,
+        'rewrite'             => true,
+        'query_var'           => true,
+    ] );
+    register_post_type( 'photogalery', [
+        'label'  => null,
+        'labels' => [
+            'name'               => 'Фотогалерея', // основное название для типа записи
+            'singular_name'      => 'Фотогалерея', // название для одной записи этого типа
+            'add_new'            => 'Добавить фотографию', // для добавления новой записи
+            'add_new_item'       => 'Добавление фотографии', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item'          => 'Редактирование фотографии', // для редактирования типа записи
+            'new_item'           => 'Новая фотография', // текст новой записи
+            'view_item'          => 'Смотреть фотографию', // для просмотра записи этого типа.
+            'search_items'       => 'Искать фотографию', // для поиска по этим типам записи
+            'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
+            'parent_item_colon'  => '', // для родителей (у древовидных типов)
+            'menu_name'          => 'Фотогалерея', // название меню
+        ],
+        'description'         => '',
+        'public'              => true,
+        // 'publicly_queryable'  => null, // зависит от public
+        // 'exclude_from_search' => null, // зависит от public
+        // 'show_ui'             => null, // зависит от public
+        // 'show_in_nav_menus'   => null, // зависит от public
+        'show_in_menu'        => null, // показывать ли в меню адмнки
+        // 'show_in_admin_bar'   => null, // зависит от show_in_menu
+        'show_in_rest'        => null, // добавить в REST API. C WP 4.7
+        'rest_base'           => null, // $post_type. C WP 4.7
+        'menu_position'       => null,
+        'menu_icon'           => 'dashicons-businessman',
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+        'hierarchical'        => false,
+        'supports'            => [ 'title', 'editor'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'taxonomies'          => [],
+        'has_archive'         => true,
+        'rewrite'             => true,
+        'query_var'           => true,
+    ] );
+}
+
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title' 	=> 'Параметры',
+        'menu_title'	=> 'Параметры темы',
+        'menu_slug' 	=> 'theme-general-settings',
+        'capability'	=> 'edit_posts',
+        'redirect'		=> false
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Параметры Header',
+        'menu_title'	=> 'Header',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Параметры Footer',
+        'menu_title'	=> 'Footer',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Параметры общие',
+        'menu_title'	=> 'Общие',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Параметры Контакты',
+        'menu_title'	=> 'Контакты',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
+}
+
+function mytheme_add_woocommerce_support(){
+    add_theme_support('woocommerce');
+}
+add_action('after_setup_theme','mytheme_add_woocommerce_support');
+
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+add_action( 'woocommerce_after_main_content', 'woocommerce_get_sidebar', 1 );
+
+add_action( 'woocommerce_before_shop_loop', 'addcontainerproducts', 35 );
+function addcontainerproducts(){
+    echo '<div class="product-page__content">';
+}
+
+function remove_jq_migrate( $scripts ) {
+    if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
+        $script = $scripts->registered['jquery'];
+        if ( $script->deps ) {
+            $script->deps = array_diff( $script->deps, array( 'jquery-migrate' ) );
+        }
+    }
+}
+add_action( 'wp_default_scripts', 'remove_jq_migrate' );

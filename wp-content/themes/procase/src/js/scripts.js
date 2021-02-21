@@ -1,201 +1,181 @@
 jQuery(document).ready(function($) {
-    $('.hamburger').css('z-index', '999');
-    $('.hamburger').on('click', function() {
-        $(this).toggleClass('active');
-        $('.menu').toggleClass('active');
-        $('body').toggleClass('overflow');
-        $('.header--nav').toggleClass('active');
-        $('.language').toggleClass('active');
+
+    window.onload = function () {
+        DublicateHeight();
+    }
+    $( window ).resize(function() {
+        DublicateHeight();
     });
-    //Owl
-     $("#reviews__slider").owlCarousel({
-        items: 1,
-        nav: true,
-        stagePadding: 0,
-        margin: 5,
-        responsive:{
-            990:{
-                items: 1,
-                nav: true,
-                stagePadding: 150,
-                margin: 50,
-            },
-            1200:{
-                items: 1,
-                nav: true,
-                stagePadding: 300,
-                margin: 50,
-            },
-            1400:{
-                items: 1,
-                nav: true,
-                stagePadding: 300,
-                margin: 150,
-            },
-            1650:{
-                items: 1,
-                nav: true,
-                stagePadding: 500,
-                margin: 220,
-            }
-        }
-      });
+    function DublicateHeight(){
+        var DonorElem = $(".header .container__bg").height();
+        var WinHeight = $(window).innerHeight();
+        $(".main-page__banner").height(WinHeight - DonorElem);
+    }
 
-     $("#related__slider").owlCarousel({
-        items: 1,
-        nav: false,
-        stagePadding: 0,
-        margin: 10,
-        responsive:{
-            500:{
-                items: 2,
-                nav: false,
-                stagePadding: 60,
-                margin: 20,
-            },
-            990:{
-                items: 3,
-                nav: false,
-                stagePadding: 100,
-                margin: 30,
-            },
-            1200:{
-                items: 3,
-                nav: false,
-                stagePadding: 200,
-                margin: 30,
-            },
-            1300:{
-                items: 3,
-                nav: false,
-                stagePadding: 280,
-                margin: 30,
-            },
-            1600:{
-                items: 3,
-                nav: false,
-                stagePadding: 300,
-                margin: 45,
-            },
-            1700:{
-                items: 3,
-                nav: false,
-                stagePadding: 350,
-                margin: 45,
-            },
-        }
-      });
-
-     $("#related__slider--wedding").owlCarousel({
-        items: 1,
-        nav: false,
-        stagePadding: 0,
-        margin: 10,
-        responsive:{
-            500:{
-                items: 2,
-                nav: false,
-                stagePadding: 60,
-                margin: 20,
-            },
-            990:{
-                items: 2,
-                nav: false,
-                stagePadding: 100,
-                margin: 30,
-            },
-            1200:{
-                items: 2,
-                nav: false,
-                stagePadding: 200,
-                margin: 30,
-            },
-            1300:{
-                items: 2,
-                nav: false,
-                stagePadding: 280,
-                margin: 30,
-            },
-            1600:{
-                items: 2,
-                nav: false,
-                stagePadding: 300,
-                margin: 45,
-            },
-            1700:{
-                items: 2,
-                nav: false,
-                stagePadding: 350,
-                margin: 45,
-            },
-        }
-      });
-
-     $('.to__top').on('click', function() {
-        $('body, html').animate({scrollTop: 0}, 1500);
-     });
-
-     //Rent form checkboxes
-     $('.rent__checkbox').on('click', function() {
-        $(this).toggleClass('active');
-     });
-
-     //Tabs
-      $(".works__content").not(":first").hide();
-        $(".steps__list li").click( function(e) {
-        $(".steps__list li").removeClass("current").eq($(this).index()).addClass("current");
-        $(".works__content").hide().eq($(this).index()).fadeIn();
-      }).eq(0).addClass("current");
-
-    $('.video__item').on('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $('.video__popup').fadeIn();
-        $('.popup__content').eq($(this).index()).css('display', 'flex');
-    });
-    $('.video__popup .popup__content').on('click', function() {
-        e.stopPropagation();
-    });
-    $('.video__popup--play').on('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).fadeOut();
-        $(this).parent().find('.video__popup--banner').fadeOut();
-        $(this).parent().find('.video__iframe--popup').fadeIn();
-    });
-
-    $('body').on('click', function() {
-        $('.video__popup').fadeOut();
-        $('.video__popup .popup__content').fadeOut();
-        $('.video__popup .video__popup--banner').fadeIn();
-        $('.video__popup .video__popup--play').fadeIn();
-    });
-
-    //Block show animation
-     AOS.init({
-        duration: 1000,
-        easing: 'ease-out-sine',
-        once: true,
-        disable: function () {
-            var maxWidth = 768;
-            return window.innerWidth <= maxWidth;
-        }
-     });
-
-    $('.play__video--item.fresco').on('click', function() {
-        var UrlLink = $(this).attr('href');
-        console.log(UrlLink);
-        Fresco.show({
-            url: UrlLink
+    if ($('.features__tabs').length){
+        $('.features__tabs .features__tab-item').on('click', function(){
+            let ClickedNav = $(this).data('count');
+            let NeedElem = $( ".features__content .tab-item[data-count='"+ClickedNav+"']" );
+            $('.features__tabs .features__tab-item').removeClass('active-tab');
+            $(this).addClass('active-tab');
+            $('.features__content .tab-item').removeClass('active-tab');
+            NeedElem.addClass('active-tab');
         });
-    });
+    }
 
-    $('#first__block').on('click', function() {
-            document.location.href = '#to__second';
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
-            }, 500);
-            return false;
-    });
+    if ($('.finishing').length){
+        var CasesSwiper = new Swiper('.finishing__slider-img', {
+            slidesPerView: 3,
+            spaceBetween: 150,
+            loop: true,
+            centeredSlides: true,
+            navigation: {
+                nextEl: '.slick-next',
+                prevEl: '.slick-prev',
+            },
+            breakpoints: {
+                900: {
+                    slidesPerView: 3,
+                },
+                500: {
+                    slidesPerView: 2.2,
+                },
+                300: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 10,
+                },
 
+            },
+            thumbs: {
+                swiper: {
+                    el: '.finishing__slider-text',
+                    slidesPerView: 1,
+                    effect: 'fade',
+                }
+            }
+        });
+    }
+
+    if ($('.main-page__banner').length){
+        var BanerSwiper = new Swiper('.main-page__banner', {
+            slidesPerView: 1,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                speed: 600,
+            },
+            pagination: {
+                el: '.main-page__banner .swiper-pagination',
+                clickable: true,
+            },
+        });
+    }
+
+    if ($('.photogalery').length){
+        const photogaleryslider = new Swiper('.photogalery', {
+            slidesPerView: 3,
+            spaceBetween: '0',
+            observer: true,
+            loop: true,
+            lazy: true,
+            observeParents: true,
+            centeredSlides: true,
+            // grabCursor: true,
+            // effect: 'coverflow',
+            // coverflowEffect:{
+            //     stretch: 50,
+            //     slideShadows: true,
+            // },
+            pagination: {
+                el: '.photogalery .swiper-pagination',
+                type: 'fraction',
+                clickable: true,
+            },
+
+            navigation: {
+                nextEl: '.photogalery .swiper-button-next',
+                prevEl: '.photogalery .swiper-button-prev',
+            },
+            breakpoints: {
+                900: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                240: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    centeredSlides: false,
+                }
+            }
+        });
+    }
+
+    if ($('.testimonial__list').length){
+        $('.testimonial__list .strong-view > .strong-content').slick({
+            infinite: true,
+            speed: 300,
+            arrows: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            prevArrow: $('.testimonial .testimonial__prev'),
+            nextArrow: $('.testimonial .testimonial__next'),
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                }
+            ]
+        });
+    }
+
+    if ($('.product-quantity').length){
+        $( ".product-quantity" ).each(function( index ) {
+            let elem = $(this).find('input').closest('.quantity');
+            $(elem).append('<div class="number"></div>')
+            $(elem).find('.number').append('<button class="number-minus" type="button">-</button>')
+            $(this).find('.number').append($(this).find('.input-text'));
+            $(elem).find('.number').append('<button class="number-plus" type="button">+</button>')
+        });
+
+        $( ".number-plus, .number-minus" ).click(function() {
+            $('td.actions .button').removeAttr('disabled');
+        });
+    }
+    if ($('.quantity div.number').length){
+        $( '.quantity div.number' ).each(function( index ) {
+            let col = $(this).find('input');
+            let plus = $(this).find('.number-plus');
+            let minus = $(this).find('.number-minus');
+            plus.click(function() {
+                col.val(parseInt(col.val())+1);
+                var check = col.val();
+                if (check > 1){
+                    minus.removeClass('disable');
+                }
+            });
+            minus.click(function() {
+                var check = col.val();
+                if (check > 1){
+                    col.val(parseInt(col.val())-1);
+                    minus.removeClass('disable');
+                } else {
+                    minus.addClass('disable');
+                }
+
+            });
+        });
+    }
+    $('select').selectric();
+
+    if ($('.product-categories').length){
+        $('.product-categories .cat-parent').on('click', function(){
+            $(this).find('ul.children').fadeToggle(300);
+        });
+    }
 });
