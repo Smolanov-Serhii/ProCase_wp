@@ -60,6 +60,7 @@ jQuery(document).ready(function($) {
         var BanerSwiper = new Swiper('.main-page__banner', {
             slidesPerView: 1,
             loop: true,
+            lazy: true,
             autoplay: {
                 delay: 5000,
                 speed: 600,
@@ -178,4 +179,93 @@ jQuery(document).ready(function($) {
             $(this).find('ul.children').fadeToggle(300);
         });
     }
+
+    if ($('.page-news').length){
+        const releatedslider = new Swiper('.swiper-container', {
+            slidesPerView: 4,
+            spaceBetween: '0',
+            observer: true,
+            loop: false,
+            lazy: true,
+            observeParents: true,
+            centeredSlides: false,
+            breakpoints: {
+                900: {
+                    slidesPerView: 3.3,
+                    spaceBetween: 30,
+                },
+                240: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 30,
+                    centeredSlides: false,
+                }
+            }
+        });
+    }
+    if ($('.faq__content').length){
+        $('.faq__content .faq__triger').on('click', function(){
+            $(this).closest('.faq__item').toggleClass('active');
+            $(this).closest('.faq__item').find('.faq__answer').fadeToggle(300);
+        });
+    }
+
+    if ($('.history__container').length){
+        $('.history__container').slick({
+            infinite: true,
+            speed: 300,
+            arrows: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            prevArrow: $('.history__container .testimonial__prev'),
+            nextArrow: $('.history__container .testimonial__next')
+        });
+    }
+
+    if ($('.production').length){
+        $('.production__container').slick({
+            infinite: false,
+            speed: 300,
+            arrows: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            prevArrow: $('.production .testimonial__prev'),
+            nextArrow: $('.production .testimonial__next')
+        });
+    }
+
+    if ($('.partners').length){
+        const partnerslider = new Swiper('.partners__list', {
+            slidesPerView: 4.5,
+            spaceBetween: '30',
+            observer: true,
+            loop: false,
+            lazy: true,
+            observeParents: true,
+            centeredSlides: false,
+            breakpoints: {
+                1200: {
+                    slidesPerView: 4.5,
+                    spaceBetween: 30,
+                },
+                768: {
+                    slidesPerView: 3.5,
+                    spaceBetween: 30,
+                    centeredSlides: false,
+                },
+                500: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 30,
+                    centeredSlides: false,
+                },
+                240: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 30,
+                    centeredSlides: false,
+                }
+            }
+        });
+    }
+
 });
