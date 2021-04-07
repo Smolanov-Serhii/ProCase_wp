@@ -1549,3 +1549,12 @@ body{
 .pf_rngstyle_thin .irs-from, .pf_rngstyle_thin .irs-to, .pf_rngstyle_thin .irs-single{
   background-color: #8b0000!important;
 }
+.default-page{
+  h1{
+    font-weight: 700;
+    margin: 30px 0;
+  }
+  h2, h3, h4, h5, h6{
+    margin-bottom: 20px;
+  }
+}
