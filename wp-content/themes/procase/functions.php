@@ -144,8 +144,8 @@ add_action( 'widgets_init', 'procase_widgets_init' );
 function procase_scripts() {
     wp_enqueue_style( 'procase-style', get_template_directory_uri() . '/dist/css/style.css', array(), _S_VERSION );
 	wp_style_add_data( 'procase-style', 'rtl', 'replace' );
-    wp_enqueue_script('newscript', get_template_directory_uri() . '/dist/js/common.js');
-	wp_enqueue_script( 'procase-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+//    wp_enqueue_script('newscript', get_template_directory_uri() . '/dist/js/common.js');
+//	wp_enqueue_script( 'procase-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

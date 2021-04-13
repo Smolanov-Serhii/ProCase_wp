@@ -81,9 +81,16 @@
             </div>
         </div>
 	</footer>
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous" defer></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/selectric@1.13.0/public/jquery.selectric.min.js" defer></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
+<script src="<?php echo get_template_directory_uri() ?>/dist/js/common.js" defer></script>
+
 
 <?php wp_footer(); ?>
 

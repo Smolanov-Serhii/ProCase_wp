@@ -234,3 +234,26 @@ button{
     background-color: #FFD7D7;
   }
 }
+.wpcf7{
+  &-list-item{
+    label{
+      display: inline-flex;
+      align-items: center;
+      input{
+        margin-right: 0;
+      }
+    }
+  }
+  form{
+    input, textarea{
+      background-color: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      border: 1px solid rgba(0,0,0,0.5);
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      resize: none;
+      width: 100%;
+    }
+  }
+}
