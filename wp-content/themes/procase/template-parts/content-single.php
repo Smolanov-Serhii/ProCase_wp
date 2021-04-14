@@ -8,16 +8,23 @@
  */
 
 ?>
-<?php procase_post_thumbnail(); ?>
-<article id="post-<?php the_ID(); ?>" class="procase-container">
-	<header class="entry-header">
-		<?php
-            the_title( '<h1 class="entry-title">', '</h1>' );
-        ?>
-	</header><!-- .entry-header -->
+<article id="post-<?php the_ID(); ?>" class="">
+    <header class="delivery__header">
+        <div class="delivery__header-img">
+            <?php the_post_thumbnail('full');?>
+        </div>
+        <div class="delivery__header-content procase-container">
+            <h1 class="delivery__header-title main-page__title">
+                <?php the_title();?>
+            </h1>
+            <div class="delivery__header-subtitle main-page__subtitle">
+                <?php the_field('podzagolovok_v_shapku_straniczy')?>
+            </div>
+        </div>
+    </header>
 
 
-	<div class="entry-content">
+	<div class="entry-content procase-container">
 		<?php
 		the_content(
 			sprintf(

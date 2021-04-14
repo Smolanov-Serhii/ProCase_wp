@@ -1,19 +1,19 @@
 <?php
 /**
- * Template Name: Фотогалерея
+ * Template Name: На заказ
  *
  */
 
 get_header();
 ?>
 
-    <main id="primary" class="page-photogalery">
+    <main id="primary" class="page-zakaz">
 
         <?php
         while ( have_posts() ) :
             the_post();
 
-            get_template_part( 'template-parts/content', 'photo' );
+            get_template_part( 'template-parts/content', 'zakaz' );
 
             // If comments are open or we have at least one comment, load up the comment template.
             if ( comments_open() || get_comments_number() ) :

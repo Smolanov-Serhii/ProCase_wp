@@ -10,26 +10,19 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <?php procase_post_thumbnail(); ?>
-	<header class="entry-header procase-container">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
-
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
-				<?php
-				procase_posted_on();
-				procase_posted_by();
-				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
+    <header class="delivery__header">
+        <div class="delivery__header-img">
+            <?php the_post_thumbnail('full');?>
+        </div>
+        <div class="delivery__header-content procase-container">
+            <h1 class="delivery__header-title main-page__title">
+                <?php the_title();?>
+            </h1>
+            <div class="delivery__header-subtitle main-page__subtitle">
+                <?php the_field('podzagolovok_v_shapku_straniczy')?>
+            </div>
+        </div>
+    </header>
 	<div class="entry-content procase-container">
 		<?php
 		the_content(

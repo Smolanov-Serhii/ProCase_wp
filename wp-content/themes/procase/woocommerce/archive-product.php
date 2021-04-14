@@ -26,26 +26,33 @@ get_header();
  * @hooked woocommerce_breadcrumb - 20
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
-do_action( 'woocommerce_before_main_content' );
 
 ?>
+    <header class="delivery__header">
+        <div class="delivery__header-img">
+            <img src="<?php echo the_field('kartinka_dlya_shapki_straniczy_produkcziya', 7)?>" alt="<?php woocommerce_page_title(); ?>">
+        </div>
+        <div class="delivery__header-content procase-container">
+            <h1 class="delivery__header-title main-page__title">
+                <?php woocommerce_page_title(); ?>
+            </h1>
+            <div class="delivery__header-subtitle main-page__subtitle">
+                <?php the_field('podzagolovok_dlya_shapki_produkcziya', 7)?>
+            </div>
+        </div>
+        <?php
+        /**
+         * Hook: woocommerce_archive_description.
+         *
+         * @hooked woocommerce_taxonomy_archive_description - 10
+         * @hooked woocommerce_product_archive_description - 10
+         */
+        do_action( 'woocommerce_archive_description' );
+        ?>
+    </header>
 
-<header class="products-page">
-	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-	<?php endif; ?>
-
-	<?php
-	/**
-	 * Hook: woocommerce_archive_description.
-	 *
-	 * @hooked woocommerce_taxonomy_archive_description - 10
-	 * @hooked woocommerce_product_archive_description - 10
-	 */
-	do_action( 'woocommerce_archive_description' );
-	?>
-</header>
 <?php
+do_action( 'woocommerce_before_main_content' );
 if ( woocommerce_product_loop() ) {
 
     /**

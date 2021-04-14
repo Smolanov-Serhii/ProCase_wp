@@ -8,18 +8,27 @@
 get_header();
 ?>
 
-    <div class="page-news procase-container">
-        <div class="page-news__container">
-            <div class="page-news__page">
-                <h1 class="title">
-                    <?php the_title();?>
-                </h1>
+    <div class="page-news ">
+        <article class="page-news__container">
+            <header class="delivery__header">
+                <div class="delivery__header-img">
+                    <?php the_post_thumbnail('full');?>
+                </div>
+                <div class="delivery__header-content procase-container">
+                    <h1 class="delivery__header-title main-page__title">
+                        <?php the_field('zagolovok_straniczy_novosti')?>
+                    </h1>
+                    <div class="delivery__header-subtitle main-page__subtitle">
+                        <?php the_field('podzagolovok_straniczy_novosti')?>
+                    </div>
+                </div>
+            </header>
+            <div class="page-news__page procase-container">
                 <div class="content">
                     <?php the_content();?>
                 </div>
             </div>
-            <div class="row">
-
+            <div class="row procase-container">
                     <div class="page-news__content" data-aos="fade-up">
                         <?php // Display blog posts on any page @ http://m0n.co/l
                         $temp = $wp_query; $wp_query= null;
@@ -57,8 +66,8 @@ get_header();
                     </div>
 
             </div>
-        </div>
-        <div class="related__wrap">
+        </article>
+        <div class="related__wrap procase-container">
             <div class="container">
                 <div class="row">
                         <div class="top__wrap">

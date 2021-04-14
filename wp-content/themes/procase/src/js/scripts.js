@@ -324,6 +324,4 @@ jQuery(document).ready(function($) {
         });
     }
 
-
-
 });
