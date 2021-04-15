@@ -81,6 +81,8 @@
             </div>
         </div>
 	</footer>
+
+
 <script src="https://cdn.jsdelivr.net/npm/selectric@1.13.0/public/jquery.selectric.min.js" defer></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript" defer></script>
 <script src="<?php echo get_template_directory_uri() ?>/dist/js/common.js" defer></script>

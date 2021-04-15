@@ -23,5 +23,5 @@ global $product;
 ?>
 
 <?php if ( $price_html = $product->get_price_html() ) : ?>
-	<div class="price"><span>Цена: </span><?php echo $price_html; ?></div>
+	<div class="price"><span><?php the_field('nadpis_czena_ot', 'options')?> </span><?php echo $price_html; ?></div>
 <?php endif; ?>

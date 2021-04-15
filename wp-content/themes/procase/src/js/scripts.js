@@ -136,43 +136,52 @@ jQuery(document).ready(function($) {
     }
 
     if ($('.product-quantity').length){
-        $( ".product-quantity" ).each(function( index ) {
-            let elem = $(this).find('input').closest('.quantity');
-            $(elem).append('<div class="number"></div>')
-            $(elem).find('.number').append('<button class="number-minus" type="button">-</button>')
-            $(this).find('.number').append($(this).find('.input-text'));
-            $(elem).find('.number').append('<button class="number-plus" type="button">+</button>')
-        });
 
         $( ".number-plus, .number-minus" ).click(function() {
             $('td.actions .button').removeAttr('disabled');
         });
     }
-    if ($('.quantity div.number').length){
-        $( '.quantity div.number' ).each(function( index ) {
-            let col = $(this).find('input');
-            let plus = $(this).find('.number-plus');
-            let minus = $(this).find('.number-minus');
-            plus.click(function() {
-                col.val(parseInt(col.val())+1);
-                var check = col.val();
-                if (check > 1){
-                    minus.removeClass('disable');
-                }
-            });
-            minus.click(function() {
-                var check = col.val();
-                if (check > 1){
-                    col.val(parseInt(col.val())-1);
-                    minus.removeClass('disable');
-                } else {
-                    minus.addClass('disable');
-                }
+    function QuantityNum(){
+        if ($('.quantity').length){
 
+            $( '.quantity' ).each(function( index ) {
+                var col = $(this).find('input');
+                var plus = $(this).find('.quantity-arrow-plus');
+                var minus = $(this).find('.quantity-arrow-minus');
+                var total = col.val();
+                plus.click(function() {
+                    total++;
+                    col.val(total);
+                    $('button.button').removeAttr("disabled");
+                    if (total > 0){
+                        minus.removeClass('disable');
+                    }
+                    col.attr('value', total);
+                    $( '[name="update_cart"]' ).trigger( 'click' );
+                    $( '[name="update_wishlist"]' ).trigger( 'click' );
+                });
+                minus.click(function() {
+                    total--;
+                    col.val(total);
+                    $('button.button').removeAttr("disabled");
+                    if (total <= 0){
+                        minus.addClass('disable');
+                    } else {
+                        minus.removeClass('disable');
+                    }
+                    col.attr('value', total);
+                    $( '[name="update_cart"]' ).trigger( 'click' );
+                    $( '[name="update_wishlist"]' ).trigger( 'click' );
+                });
             });
-        });
+        }
+
     }
-    $('select').selectric();
+    QuantityNum();
+    $("body").bind("DOMSubtreeModified", function() {
+        QuantityNum();
+    });
+    // $('select').selectric();
 
     if ($('.product-categories').length){
         $('.product-categories .cat-parent').on('click', function(){
@@ -322,6 +331,23 @@ jQuery(document).ready(function($) {
                 // .add(myPlacemark)
                 .add(myPlacemarkWithContent);
         });
+    }
+
+    if ($('.woocommerce-checkout').length){
+        $('#billing_last_name_field').appendTo('.checkout__person');
+        $('#billing_first_name_field').appendTo('.checkout__person');
+        $('#billing_email_field').appendTo('.checkout__person');
+        $('#billing_phone_field').appendTo('.checkout__person');
+        $('#shipping_method').appendTo('.checkout__dostavka-select');
+        $('#billing_city_field').appendTo('.checkout__dostavka-select');
+        $('#billing_address_1_field').appendTo('.checkout__dostavka-select');
+        $('#house_field').appendTo('.checkout__dostavka-select');
+        $('#flat_field').appendTo('.checkout__dostavka-select');
+        $('#payment').appendTo('.checkout__pay-select');
+        $('#order_review').appendTo('.checkout__right-column');
+        $('.col2-set').appendTo('.checkout__pay-select');
+        $('#place_order').appendTo('.checkout__footer-btn');
+
     }
 
 });
