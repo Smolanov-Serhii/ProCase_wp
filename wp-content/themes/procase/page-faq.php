@@ -18,7 +18,7 @@ get_header();
                         <?php the_title();?>
                     </h1>
                     <div class="delivery__header-subtitle main-page__subtitle">
-                        <?php the_field('podzagolovok_v_shapku_straniczy')?>
+                        <?php the_field('podzagolovok_straniczy_faq')?>
                     </div>
                 </div>
             </header>

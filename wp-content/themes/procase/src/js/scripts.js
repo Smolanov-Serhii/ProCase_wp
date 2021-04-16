@@ -1,5 +1,25 @@
 jQuery(document).ready(function($) {
 
+    if ($('.test__slider').length){
+        $('.test__slider').slick({
+            infinite: false,
+            speed: 300,
+            lazyLoad: false,
+            adaptiveHeight: true,
+            arrows: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            swipe: false,
+            swipeToSlide: false,
+            touchMove: false,
+            draggable: false
+        });
+        $('.js-to-second, .js-to-third, .js-to-four').on('click', function() {
+            $('.test__slider').slick('slickNext');
+        });
+    }
+
     window.onload = function () {
         DublicateHeight();
     }

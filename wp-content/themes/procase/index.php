@@ -30,8 +30,8 @@ get_header();
                                     <h2 class="main-page__subtitle">
                                         <?php echo $sub_subtitle; ?>
                                     </h2>
-                                    <div class="main-page__lnk">
-                                        <a href="<?php echo $sub_lnk; ?>">перейти в каталог</a>
+                                    <div>
+                                        <a  class="main-page__lnk" href="<?php echo $sub_lnk; ?>">перейти в каталог</a>
                                     </div>
                                 </div>
                             </div>
@@ -90,52 +90,338 @@ get_header();
                     </svg>
                     <span>это займёт всего минуту</span>
                 </div>
-                <div class="test__container">
-                    <div class="test__video">
-                        <?php the_field('ssylka_na_video_testa', 2); ?>
-                    </div>
-                    <div class="test__content">
-                        <div class="test__small-title">
-                            <?php the_field('shapka_opisaniya', 2); ?>
-                        </div>
-                        <div class="test__desc">
-                            <?php
+                <form id="add_feedback">
+                    <div class="test__slider">
+                        <div class="test__container test__container-item">
+                            <div class="test__video">
+                                <?php the_field('ssylka_na_video_testa', 2); ?>
+                            </div>
+                            <div class="test__content">
+                                <div class="test__small-title">
+                                    <?php the_field('shapka_opisaniya', 2); ?>
+                                </div>
+                                <div class="test__desc">
+                                    <?php
 
-                            if (have_rows('opisanie_bloka_test', 2)):
+                                    if (have_rows('opisanie_bloka_test', 2)):
 
-                                while (have_rows('opisanie_bloka_test', 2)) : the_row();
+                                        while (have_rows('opisanie_bloka_test', 2)) : the_row();
 
-                                    $testtitle = get_sub_field('punkt_opisaniya', 2);
+                                            $testtitle = get_sub_field('punkt_opisaniya', 2);
+                                            ?>
+                                            <div class="test__item">
+                                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0)">
+                                                        <path d="M30.4764 15.9421C30.7424 16.9807 30.8981 18.0637 30.8981 19.1839C30.8981 26.4277 25.0061 32.3194 17.7627 32.3194C10.5194 32.3194 4.62604 26.4277 4.62604 19.1839C4.62604 11.9404 10.5194 6.04711 17.7627 6.04711C19.6088 6.04711 21.3642 6.43445 22.9598 7.12452L24.9126 3.98547C22.7395 2.95871 20.3216 2.36682 17.7627 2.36682C8.48971 2.36682 0.945312 9.91121 0.945312 19.1839C0.945312 28.4558 8.48971 36.0001 17.7627 36.0001C27.0343 36.0001 34.5785 28.4558 34.5785 19.1839C34.5785 16.6068 33.9784 14.1726 32.9387 11.9873L30.4764 15.9421Z"
+                                                              fill="black"/>
+                                                        <path d="M33.6082 0.463446C32.1706 -0.430524 30.2789 0.0078258 29.3838 1.44543L17.1888 21.0422L13.1036 15.2162C12.1321 13.83 10.2175 13.4944 8.83123 14.466C7.44528 15.439 7.10845 17.3508 8.08122 18.7383L14.8297 28.3625C15.4051 29.1818 16.343 29.6683 17.341 29.6683C17.3685 29.6683 17.3974 29.6683 17.4249 29.667C18.4539 29.6383 19.4007 29.0959 19.9443 28.222L34.5909 4.68767C35.4869 3.24847 35.0459 1.358 33.6082 0.463446Z"
+                                                              fill="#D62D30"/>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0">
+                                                            <rect width="36" height="36" fill="white"
+                                                                  transform="translate(0 0.00012207)"/>
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                                <span><?php echo $testtitle; ?></span>
+                                            </div>
+                                        <?php
+                                        endwhile;
+                                    else :
+                                    endif;
                                     ?>
-                                    <div class="test__item">
-                                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0)">
-                                                <path d="M30.4764 15.9421C30.7424 16.9807 30.8981 18.0637 30.8981 19.1839C30.8981 26.4277 25.0061 32.3194 17.7627 32.3194C10.5194 32.3194 4.62604 26.4277 4.62604 19.1839C4.62604 11.9404 10.5194 6.04711 17.7627 6.04711C19.6088 6.04711 21.3642 6.43445 22.9598 7.12452L24.9126 3.98547C22.7395 2.95871 20.3216 2.36682 17.7627 2.36682C8.48971 2.36682 0.945312 9.91121 0.945312 19.1839C0.945312 28.4558 8.48971 36.0001 17.7627 36.0001C27.0343 36.0001 34.5785 28.4558 34.5785 19.1839C34.5785 16.6068 33.9784 14.1726 32.9387 11.9873L30.4764 15.9421Z"
-                                                      fill="black"/>
-                                                <path d="M33.6082 0.463446C32.1706 -0.430524 30.2789 0.0078258 29.3838 1.44543L17.1888 21.0422L13.1036 15.2162C12.1321 13.83 10.2175 13.4944 8.83123 14.466C7.44528 15.439 7.10845 17.3508 8.08122 18.7383L14.8297 28.3625C15.4051 29.1818 16.343 29.6683 17.341 29.6683C17.3685 29.6683 17.3974 29.6683 17.4249 29.667C18.4539 29.6383 19.4007 29.0959 19.9443 28.222L34.5909 4.68767C35.4869 3.24847 35.0459 1.358 33.6082 0.463446Z"
-                                                      fill="#D62D30"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0">
-                                                    <rect width="36" height="36" fill="white"
-                                                          transform="translate(0 0.00012207)"/>
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span><?php echo $testtitle; ?></span>
-                                    </div>
-                                <?php
-                                endwhile;
-                            else :
-                            endif;
-                            ?>
+                                </div>
+                                <div class="test__button red-button js-to-second">
+                                    пройти тест
+                                </div>
+                            </div>
                         </div>
-                        <div class="test__button red-button">
-                            пройти тест
+                        <div class="test__container-item type-slide type-slide-first">
+                            <div class="test__container-count"><p>Вопрос 1 из 4</p></div>
+                            <h2 class="test__container-item-title">Для чего Вам нужен кейс (кофр)?</h2>
+                            <div class="test__container-item-container">
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-1-1.jpg" alt="Для концертного оборудования">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="type-concert" name="type-concert">
+                                        <span>Для концертного оборудования</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-1-2.jpg" alt="Универсальные">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="type-universal" name="type-universal">
+                                        <span>Универсальные</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-1-3.jpg" alt="Для 19' рэкового оборудования">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="type-reco" name="type-reco">
+                                        <span>Для 19" рэкового оборудования</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-1-4.jpg" alt="Для музыкальных инструментов">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="type-music" name="type-music">
+                                        <span>Для музыкальных инструментов</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-1-5.jpg" alt="Для ценных бумаг/образцов">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="type-paper" name="type-paper">
+                                        <span>Для ценных бумаг/образцов</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-1-6.svg" alt="Для другого">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="type-other" name="type-other">
+                                        <span>Для другого</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="nex-slide-quiz red-button js-to-third">
+                                <img src="<?php echo get_template_directory_uri()?>/dist/img/nex-quiz.svg" alt="следующий вопрос">
+                                Дальше
+                            </div>
+                        </div>
+                        <div class="test__container-item type-slide type-slide-second">
+                            <div class="test__container-count"><p>Вопрос 2 из 4</p></div>
+                            <h2 class="test__container-item-title">Какой кейс (кофр) Вам нужен?</h2>
+                            <div class="test__container-item-container">
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-2-1.svg" alt="Максимально легкий">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="need-legkiy" name="need-legkiy">
+                                        <span>Максимально легкий</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-2-2.svg" alt="Максимально защищенный">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="need-defend" name="need-defend">
+                                        <span>Максимально защищенный</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-2-3.svg" alt="На колесах">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="need-koleso" name="need-koleso">
+                                        <span>На колесах</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-2-4.svg" alt="С выдвижной ручкой">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="need-hend" name="need-hendc">
+                                        <span>С выдвижной ручкой</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-2-5.svg" alt="Алюминиевый">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="need-aluminiy" name="need-aluminiy">
+                                        <span>Алюминиевый</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-1-6.svg" alt="Для другого">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="need-other" name="need-other">
+                                        <span>Другой</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="nex-slide-quiz red-button js-to-third">
+                                <img src="<?php echo get_template_directory_uri()?>/dist/img/nex-quiz.svg" alt="следующий вопрос">
+                                Дальше
+                            </div>
+                        </div>
+                        <div class="test__container-item type-slide type-slide-third">
+                            <div class="test__container-count"><p>Вопрос 3 из 4</p></div>
+                            <h2 class="test__container-item-title">Какое количество кейсов (кофров) Вам нужно?</h2>
+                            <div class="test__container-item-container">
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-3-1.svg" alt="1 шт<">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="tiraj-1" name="tiraj-1">
+                                        <span>1 шт</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-3-2.svg" alt="2-5 шт">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="tiraj-2-5" name="tiraj-2-5">
+                                        <span>2-5 шт<</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-3-3.svg" alt="6-20 шт">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="tiraj-6-20" name="tiraj-6-20">
+                                        <span>6-20 шт</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-3-4.svg" alt="21-50 шт">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="tiraj-21-50" name="tiraj-21-50">
+                                        <span>21-50 шт</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-3-5.svg" alt=">50 шт">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="tiraj-50more" name="tiraj-50more">
+                                        <span>Больше 50 шт</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-1-6.svg" alt="Пока не знаю">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="need-other" name="need-other">
+                                        <span>Пока не знаю</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="nex-slide-quiz red-button js-to-four">
+                                <img src="<?php echo get_template_directory_uri()?>/dist/img/nex-quiz.svg" alt="следующий вопрос">
+                                Дальше
+                            </div>
+                        </div>
+                        <div class="test__container-item type-slide type-slide-fifth">
+                            <div class="test__container-count"><p>Вопрос 4 из 4</p></div>
+                            <h2 class="test__container-item-title">Каким способом удобно забрать кейсы (кофры)?</h2>
+                            <div class="test__container-item-container">
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-4-1.svg" alt="Самовывоз со склада в г.Минске<">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="get-sam" name="get-sam">
+                                        <span>Самовывоз со склада в г.Минске</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-4-2.svg" alt="Доставка по г.Минску">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="get-minsk" name="get-sam">
+                                        <span>Доставка по г.Минску</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-4-3.svg" alt="Доставка по Беларуси">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="get-belarus name="get-sam">
+                                        <span>Доставка по Беларуси</span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <img src="<?php echo get_template_directory_uri()?>/dist/img/quize/test-1-6.svg" alt="Пока не знаю">
+                                    <div class="wrapper">
+                                        <input type="checkbox" id="get-other" name="get-sam">
+                                        <span>Пока не знаю</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="nex-slide-quiz red-button js-to-four">
+                                <img src="<?php echo get_template_directory_uri()?>/dist/img/nex-quiz.svg" alt="следующий вопрос">
+                                Дальше
+                            </div>
+                        </div>
+                        <div class="test__container-item type-slide type-slide-sixth">
+                            <div class="test__container-item-left">
+                                <div class="test__container-count"><p>Спасибо, что ответили на вопросы</p></div>
+                                <h2 class="test__container-item-title">Укажите, как Вам удобно, чтобы мы с Вами связались</h2>
+                                <div class="test__container-item-container">
+                                    <label>
+                                        <div class="wrapper">
+                                            <input type="radio" id="get-phone" name="get-phone" value="Звонок">
+                                            <span class="fon"></span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 13"><path fill="#1B1918" d="M13.75,11.3a3.65,3.65,0,0,1-2.33,1.64,5.63,5.63,0,0,1-2.13-.1,20.56,20.56,0,0,1-1.93-.77A14.64,14.64,0,0,1,1.45,6.86,6.29,6.29,0,0,1,0,3.29,4.07,4.07,0,0,1,1.16.39a1.07,1.07,0,0,1,1-.39h.68c.19,0,.48-.09.77.58S4.55,3,4.65,3.09a.66.66,0,0,1,0,.58,2,2,0,0,1-.39.58c-.19.19-.39.48-.48.58s-.39.39-.2.68A9.82,9.82,0,0,0,5.52,7.92,10.73,10.73,0,0,0,8.33,9.66a.57.57,0,0,0,.77-.1,9,9,0,0,0,1.07-1.35c.19-.39.48-.29.77-.2s2,1,2.32,1.16a3,3,0,0,1,.68.39A3,3,0,0,1,13.75,11.3Z"/></svg>
+                                            <span>Звонок</span>
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <div class="wrapper">
+                                            <input type="radio" id="get-phone" name="get-phone" value="WhatsApp">
+                                            <span class="fon"></span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15"><path fill="#48C95F" d="M12.8,2.19A7.47,7.47,0,0,0,.05,7.45a7.54,7.54,0,0,0,1,3.7L0,15l4-1a7.69,7.69,0,0,0,3.56.88A7.45,7.45,0,0,0,15,7.4,7.54,7.54,0,0,0,12.8,2.19ZM11.13,10.1A1.93,1.93,0,0,1,9.88,11a3,3,0,0,1-1.15-.05c-.26-.11-.63-.21-1.05-.42A8,8,0,0,1,4.49,7.71a3.42,3.42,0,0,1-.78-1.93,2.16,2.16,0,0,1,.63-1.56A.56.56,0,0,1,4.86,4h.37c.1,0,.26,0,.41.31s.53,1.31.58,1.36a.34.34,0,0,1,0,.31A1.13,1.13,0,0,1,6,6.3l-.26.31c-.11.11-.21.21-.11.37a5.17,5.17,0,0,0,1.05,1.3,5.78,5.78,0,0,0,1.52.94.31.31,0,0,0,.41-.05,4.65,4.65,0,0,0,.58-.73c.1-.21.26-.16.42-.11s1.09.52,1.25.63a1.44,1.44,0,0,1,.37.21A1.59,1.59,0,0,1,11.13,10.1Z"/></svg>
+                                            <span>WhatsApp</span>
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <div class="wrapper">
+                                            <input type="radio" id="get-phone" name="get-phone" value="Viber">
+                                            <span class="fon"></span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17"><path fill="#7C509A" d="M12.38.4A24.66,24.66,0,0,0,3.56.4a4.92,4.92,0,0,0-3.18,3,16.2,16.2,0,0,0,0,7,5.16,5.16,0,0,0,3.18,3,.11.11,0,0,1,.11.1v3.39a.19.19,0,0,0,.34.11l1.67-1.67,1.57-1.56a.18.18,0,0,1,.11,0,27.23,27.23,0,0,0,5.08-.38,4.9,4.9,0,0,0,3.18-3,16.16,16.16,0,0,0,0-7A5.17,5.17,0,0,0,12.38.4Zm.06,10.12a2.56,2.56,0,0,1-1.17,1.24l-.51.16-.55-.16A13.2,13.2,0,0,1,5.4,8.69,13.07,13.07,0,0,1,3.56,6,15.24,15.24,0,0,1,3,4.6a1.2,1.2,0,0,1,.39-1.18,2.49,2.49,0,0,1,1-.7.62.62,0,0,1,.78.16A10.87,10.87,0,0,1,6.35,4.55a.75.75,0,0,1-.22,1.07,1.08,1.08,0,0,0-.28.22c-.06,0-.17.1-.22.21a.49.49,0,0,0-.06.49A4.57,4.57,0,0,0,8.14,9.28a1.33,1.33,0,0,0,.67.16c.39,0,.56-.48.84-.7a.88.88,0,0,1,.95-.05c.28.16.56.38.89.59s.56.38.84.59A.53.53,0,0,1,12.44,10.52Zm-2.35-4h0c-.22,0-.27-.1-.33-.27a.8.8,0,0,0-.06-.37.94.94,0,0,0-.39-.59L9,5.08a1.38,1.38,0,0,0-.45,0,.29.29,0,0,1-.22-.32c0-.11.16-.22.28-.22a1.64,1.64,0,0,1,1.67,1.56v.22C10.26,6.38,10.21,6.48,10.09,6.48ZM9.54,4.12a4,4,0,0,0-.9-.27c-.11,0-.28-.06-.39-.06S8,3.69,8,3.52a.2.2,0,0,1,.28-.21,4.82,4.82,0,0,1,1.56.38A3,3,0,0,1,11.6,6.05v.7a.26.26,0,0,1-.5,0S11,6.59,11,6.54a3.07,3.07,0,0,0-.33-1.4A3,3,0,0,0,9.54,4.12Zm3,3.22A.3.3,0,0,1,12.27,7a5.44,5.44,0,0,0-.11-1A4.06,4.06,0,0,0,8.75,2.66c-.28-.05-.55-.05-.78-.1s-.39,0-.44-.22S7.64,2,7.8,2h.12c2.29,0,.11,0,0,0a4.69,4.69,0,0,1,4.69,3.82A8.46,8.46,0,0,1,12.72,7,.2.2,0,0,1,12.55,7.34Z"/></svg>
+                                            <span>Viber</span>
+                                        </div>
+                                    </label>
+                                    <label>
+                                        <div class="wrapper">
+                                            <input type="radio" id="get-phone" name="get-phone" value="Telegram">
+                                            <span class="fon"></span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 14"><path fill="#2F89CE" d="M.3,6.72,4.21,8.1l1.52,4.62a.45.45,0,0,0,.73.19l2.18-1.69a.66.66,0,0,1,.8,0l3.91,2.69a.47.47,0,0,0,.73-.25L17,.53A.45.45,0,0,0,16.4,0L.3,5.91A.42.42,0,0,0,.3,6.72Zm5.23.69L13.22,3c.13-.06.26.12.13.19L7.05,8.72a1.11,1.11,0,0,0-.39.75L6.46,11c0,.19-.33.25-.4,0L5.27,8.22A.53.53,0,0,1,5.53,7.41Z"/></svg>
+                                            <span>Telegram</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="phone">
+                                    <input type="phone" id="form-phone" name="form-phone">
+                                    <button class="red-button" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 25"><path fill="#FFF" d="M15.52,25h-12A3.41,3.41,0,0,1,0,21.68V3.32A3.41,3.41,0,0,1,3.48,0h12A3.41,3.41,0,0,1,19,3.32V21.68A3.41,3.41,0,0,1,15.52,25ZM3.48,2A1.31,1.31,0,0,0,2.14,3.32V21.68A1.31,1.31,0,0,0,3.48,23h12a1.31,1.31,0,0,0,1.34-1.28V3.32A1.31,1.31,0,0,0,15.52,2Z"/><path fill="#FFF" d="M9.5,20.54a1.15,1.15,0,1,1,1.2-1.15A1.18,1.18,0,0,1,9.5,20.54Zm0-1.28a.13.13,0,0,0-.13.13c0,.14.26.14.26,0A.13.13,0,0,0,9.5,19.26Z"/></svg>
+                                        Получить расчет
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="test__container-item-right">
+                                <div class="test__content">
+                                    <div class="test__small-title">
+                                        Вы получите
+                                    </div>
+                                    <div class="test__desc">
+                                        <?php
+
+                                        if (have_rows('opisanie_bloka_test', 2)):
+
+                                            while (have_rows('opisanie_bloka_test', 2)) : the_row();
+
+                                                $testtitle = get_sub_field('punkt_opisaniya', 2);
+                                                ?>
+                                                <div class="test__item">
+                                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <g clip-path="url(#clip0)">
+                                                            <path d="M30.4764 15.9421C30.7424 16.9807 30.8981 18.0637 30.8981 19.1839C30.8981 26.4277 25.0061 32.3194 17.7627 32.3194C10.5194 32.3194 4.62604 26.4277 4.62604 19.1839C4.62604 11.9404 10.5194 6.04711 17.7627 6.04711C19.6088 6.04711 21.3642 6.43445 22.9598 7.12452L24.9126 3.98547C22.7395 2.95871 20.3216 2.36682 17.7627 2.36682C8.48971 2.36682 0.945312 9.91121 0.945312 19.1839C0.945312 28.4558 8.48971 36.0001 17.7627 36.0001C27.0343 36.0001 34.5785 28.4558 34.5785 19.1839C34.5785 16.6068 33.9784 14.1726 32.9387 11.9873L30.4764 15.9421Z"
+                                                                  fill="black"/>
+                                                            <path d="M33.6082 0.463446C32.1706 -0.430524 30.2789 0.0078258 29.3838 1.44543L17.1888 21.0422L13.1036 15.2162C12.1321 13.83 10.2175 13.4944 8.83123 14.466C7.44528 15.439 7.10845 17.3508 8.08122 18.7383L14.8297 28.3625C15.4051 29.1818 16.343 29.6683 17.341 29.6683C17.3685 29.6683 17.3974 29.6683 17.4249 29.667C18.4539 29.6383 19.4007 29.0959 19.9443 28.222L34.5909 4.68767C35.4869 3.24847 35.0459 1.358 33.6082 0.463446Z"
+                                                                  fill="#D62D30"/>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0">
+                                                                <rect width="36" height="36" fill="white"
+                                                                      transform="translate(0 0.00012207)"/>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <span><?php echo $testtitle; ?></span>
+                                                </div>
+                                            <?php
+                                            endwhile;
+                                        else :
+                                        endif;
+                                        ?>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="features">
                 <h2 class="features__title section-title">
@@ -360,9 +646,9 @@ get_header();
                     <div class="testimonial__descript">
                         <?php echo the_field('podopisanie_dlya_bloka_otzyvy', 2); ?>
                     </div>
-                    <a href="<?php echo the_field('ssylka_na_knopku_bloka_otzyvy', 2); ?>" class="testimonial__btn red-button js-reviewe">
+                    <div class="testimonial__btn red-button js-reviewe">
                         ОСТАВИТЬ ОТЗЫВ
-                    </a>
+                    </div>
                 </div>
                 <div class="testimonial__list">
                     <div class="testimonial__wrapper">

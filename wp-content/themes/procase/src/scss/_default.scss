@@ -104,6 +104,9 @@ h6{
   font-weight: 600;
   font-size: 18px;
 }
+.default-page h1{
+  font-weight: 600!important;
+}
 a.button, .reset_variations, .button.woof_submit_search_form, .custom-checkout-button, .checkout__footer-btn #place_order, .woof_reset_button_2{
   background: linear-gradient(180deg,#d62d30 0,#601112 100%) !important;
   border: 1px solid #d62d30!important;
