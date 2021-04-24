@@ -13,14 +13,18 @@ get_header();
                 if (have_rows('slajder_banera')):
                     while (have_rows('slajder_banera')) : the_row();
                         $sub_image = get_sub_field('izobrazhenie_banera');
+                        $sub_image_mob = get_sub_field('izobrazhenie_banera_mob');
                         $sub_title = get_sub_field('zagolovok_dlya_banera');
                         $sub_subtitle = get_sub_field('podzagolovok_dlya_banera');
                         $sub_lnk = get_sub_field('ssylka_dlya_knopki_banera');
                         ?>
                         <div class="main-page__slide swiper-slide">
                             <div class="main-page__image">
-                                <img src="<?php echo $sub_image ?>"
-                                     alt=" <?php echo the_field('zagolovok_dlya_banera', 2); ?>">
+                                <picture>
+                                    <source media="(max-width: 768px)"
+                                            srcset="<?php echo $sub_image_mob;?>">
+                                    <img src="<?php echo $sub_image;?>" alt="<?php echo $sub_title ?>">
+                                </picture>
                             </div>
                             <div class="main-page__content">
                                 <div class="main-page__wrapper procase-container">

@@ -1,8 +1,12 @@
 html{
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 120%;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 135%;
+  font-size: 62.5%;
+  color: #403F3E;
+  @media all and (max-width: 1100px) {
+    font-size: 58%;
+  }
 }
 pre{
   white-space: break-spaces;
@@ -12,36 +16,36 @@ img{
 }
 p, pre{
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.8rem;
   line-height: 1.5em;
   margin-bottom: 0.9em;
   @media all and (max-width: 1200px) {
-    font-size: 17px;
+    font-size: 1.7rem;
   }
   @media all and (max-width: 1024px) {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
   @media all and (max-width: 768px) {
-    font-size: 15px;
+    font-size: 1.5rem;
   }
   @media all and (max-width: 768px) {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 }
 h1{
   font-weight: 600;
-  font-size: 48px;
+  font-size: 4.8rem;
   @media all and (max-width: 1200px) {
-    font-size: 40px;
+    font-size: 4rem;
   }
   @media all and (max-width: 1024px) {
-    font-size: 32px;
+    font-size: 3.2rem;
   }
   @media all and (max-width: 768px) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
   @media all and (max-width: 768px) {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 }
 ul,ol{
@@ -50,19 +54,19 @@ ul,ol{
   margin-bottom: 1.2em;
   li{
     margin-bottom: 0.6em;
-    font-size: 18px;
+    font-size: 1.8rem;
     line-height: 1.5em;
     @media all and (max-width: 1200px) {
-      font-size: 17px;
+      font-size: 1.7rem;
     }
     @media all and (max-width: 1024px) {
-      font-size: 16px;
+      font-size: 1.6rem;
     }
     @media all and (max-width: 768px) {
-      font-size: 15px;
+      font-size: 1.5rem;
     }
     @media all and (max-width: 768px) {
-      font-size: 14px;
+      font-size: 1.4rem;
     }
   }
 }
@@ -74,35 +78,35 @@ em{
 }
 h2{
   font-weight: 600;
-  font-size: 42px;
+  font-size: 4.2rem;
   @media all and (max-width: 1200px) {
-    font-size: 34px;
+    font-size: 3.4rem;
   }
   @media all and (max-width: 1024px) {
-    font-size: 26px;
+    font-size: 2.6rem;
   }
   @media all and (max-width: 768px) {
-    font-size: 18px;
+    font-size: 1.8rem;
   }
   @media all and (max-width: 768px) {
-    font-size: 10px;
+    font-size: 1rem;
   }
 }
 h3{
   font-weight: 600;
-  font-size: 36px;
+  font-size: 3.6rem;
 }
 h4{
   font-weight: 600;
-  font-size: 30px;
+  font-size: 3rem;
 }
 h5{
   font-weight: 600;
-  font-size: 24px;
+  font-size: 2.4rem;
 }
 h6{
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 .default-page h1{
   font-weight: 600!important;
@@ -111,7 +115,7 @@ a.button, .reset_variations, .button.woof_submit_search_form, .custom-checkout-b
   background: linear-gradient(180deg,#d62d30 0,#601112 100%) !important;
   border: 1px solid #d62d30!important;
   font-weight: 600!important;
-  font-size: 14px!important;
+  font-size: 1.4rem!important;
   line-height: 17px!important;
   text-transform: uppercase;
   color: #fff!important;
@@ -141,7 +145,7 @@ table{
   th, td{
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 1.8rem;
     line-height: 28px;
     color: #000000;
     border-top: 1px solid black;
@@ -168,7 +172,7 @@ input[type="button"]{
 }
 input[type="number"]{
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 17px;
   text-align: left;
   color: black;
@@ -195,7 +199,7 @@ input[type="number"] {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 2.4rem;
   line-height: 100%;
   color: #112A3D;
   margin: 0;
@@ -228,7 +232,7 @@ input[type="number"] {
       justify-content: center;
       align-items: center;
       background-color: white;
-      font-size: 24px;
+      font-size: 2.4rem;
       color: white;
       background: linear-gradient(180deg,#d62d30 0,#601112 100%) !important;
       border: none;
@@ -245,7 +249,7 @@ input[type="number"] {
 }
 .quantity-block {
   margin: auto;
-  font-size: 20px;
+  font-size: 2rem;
 }
 .quantity-arrow-minus,
 .quantity-arrow-plus {
@@ -260,7 +264,7 @@ button{
   background: linear-gradient(180deg,#d62d30 0,#601112 100%);
   border: 1px solid #d62d30;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 17px;
   text-transform: uppercase;
   color: #fff;

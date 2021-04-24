@@ -20,12 +20,14 @@ jQuery(document).ready(function($) {
         });
     }
 
-    window.onload = function () {
-        DublicateHeight();
+    if( $(window).width() >= 1401) {
+        window.onload = function () {
+            DublicateHeight();
+        }
+        $( window ).resize(function() {
+            DublicateHeight();
+        });
     }
-    $( window ).resize(function() {
-        DublicateHeight();
-    });
     function DublicateHeight(){
         var DonorElem = $(".header .container__bg").height();
         var WinHeight = $(window).innerHeight();
@@ -56,12 +58,18 @@ jQuery(document).ready(function($) {
             breakpoints: {
                 900: {
                     slidesPerView: 3,
+                    spaceBetween: 50,
                 },
                 500: {
-                    slidesPerView: 2.2,
+                    slidesPerView: 3,
+                    spaceBetween: 20,
                 },
-                300: {
-                    slidesPerView: 1.2,
+                400: {
+                    slidesPerView: 2.6,
+                    spaceBetween: 20,
+                },
+                240: {
+                    slidesPerView: 1.6,
                     spaceBetween: 10,
                 },
 
@@ -101,12 +109,6 @@ jQuery(document).ready(function($) {
             lazy: true,
             observeParents: true,
             centeredSlides: true,
-            // grabCursor: true,
-            // effect: 'coverflow',
-            // coverflowEffect:{
-            //     stretch: 50,
-            //     slideShadows: true,
-            // },
             pagination: {
                 el: '.photogalery .swiper-pagination',
                 type: 'fraction',
@@ -118,14 +120,21 @@ jQuery(document).ready(function($) {
                 prevEl: '.photogalery .swiper-button-prev',
             },
             breakpoints: {
-                900: {
+                1200: {
                     slidesPerView: 3,
                     spaceBetween: 30,
                 },
+                900: {
+                    slidesPerView: 2.6,
+                    spaceBetween: 20,
+                },
+                500: {
+                    slidesPerView: 2.4,
+                    spaceBetween: 10,
+                },
                 240: {
-                    slidesPerView: 1,
+                    slidesPerView: 1.4,
                     spaceBetween: 30,
-                    centeredSlides: false,
                 }
             }
         });
