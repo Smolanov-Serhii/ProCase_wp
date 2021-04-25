@@ -29,6 +29,9 @@ body {
   background-image: url(../img/ng-circle-fill.jpg);
   background-repeat: repeat-y;
   background-position: center;
+  @media all and (max-width: 980px) {
+    padding-top: 20px;
+  }
   &.overflow {
     overflow: hidden;
     pointer-events: none;
