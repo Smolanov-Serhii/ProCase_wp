@@ -421,7 +421,7 @@ form.cart {
       height: 900vw * $px;
     }
     @media all and (max-width: 768px) {
-      height: auto;
+      height: 500px;
     }
     .swiper-wrapper{
       align-items: stretch;
@@ -449,6 +449,8 @@ form.cart {
       @media all and (max-width: 768px) {
         width: 8px;
         height: 8px;
+        background-color: white;
+        opacity: 0.6;
       }
     }
     .swiper-pagination-bullet-active{
@@ -468,21 +470,16 @@ form.cart {
       align-items: flex-end;
     }
     @media all and (max-width: 768px) {
-      position: static;
-      height: auto;
-      flex: 1;
+
+    }
+    @media all and (max-width: 500px) {
+      text-align: center;
     }
   }
   &__image{
     height: 100%;
     @media all and (max-width: 768px) {
-      height: 600px;
-    }
-    @media all and (max-width: 500px) {
-      height: 400px;
-    }
-    @media all and (max-width: 440px) {
-      height: 300px;
+      height: 500px;
     }
     img{
       width: 100%;
@@ -497,14 +494,14 @@ form.cart {
     height: 100%;
     @media all and (max-width: 768px) {
       width: 100%;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0,0,0,0.6);
       margin-left: 0;
       height: auto;
       padding: 40px 20px 80px 20px;
       margin-bottom: 0;
     }
     @media all and (max-width: 768px) {
-      background-color: #000000;
+      background-color: rgba(0,0,0,0.6);
       padding: 20px 20px 70px 20px;
     }
   }
@@ -523,11 +520,13 @@ form.cart {
     }
     @media all and (max-width: 768px) {
       padding-right: 0;
-      font-size: 24px;
+      font-size: 22px;
     }
     @media all and (max-width: 500px) {
       font-size: 20px;
       max-width: 250px;
+      margin: auto;
+      padding-bottom: 10px;
     }
   }
   &__subtitle{
@@ -551,6 +550,10 @@ form.cart {
     @media all and (max-width: 500px) {
       font-size: 14px;
       max-width: 250px;
+      margin: auto;
+    }
+    @media all and (max-width: 450px) {
+      font-size: 12px;
     }
   }
   &__lnk{
