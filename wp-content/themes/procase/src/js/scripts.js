@@ -1,5 +1,4 @@
 jQuery(document).ready(function($) {
-
     if ($('.burger__button').length){
         $('.burger__button').on('click', function(){
             $('.header__mobile-nav').fadeToggle(300);
