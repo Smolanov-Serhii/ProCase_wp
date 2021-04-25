@@ -42,15 +42,16 @@ h1{
     font-size: 3.2rem;
   }
   @media all and (max-width: 768px) {
-    font-size: 2.4rem;
+    font-size: 20px;
   }
   @media all and (max-width: 768px) {
-    font-size: 1.6rem;
+    font-size: 18px;
   }
 }
 ul,ol{
   list-style: disc;
   margin-left: 1.2em;
+  padding-left: 1.2em;
   margin-bottom: 1.2em;
   li{
     margin-bottom: 0.6em;
@@ -79,6 +80,7 @@ em{
 h2{
   font-weight: 600;
   font-size: 4.2rem;
+  margin-bottom: 10px;
   @media all and (max-width: 1200px) {
     font-size: 3.4rem;
   }
@@ -86,19 +88,43 @@ h2{
     font-size: 2.6rem;
   }
   @media all and (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 18px;
   }
   @media all and (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 16px
   }
 }
 h3{
   font-weight: 600;
   font-size: 3.6rem;
+  @media all and (max-width: 1200px) {
+    font-size: 3.2rem;
+  }
+  @media all and (max-width: 1024px) {
+    font-size: 2.4rem;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 16px;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 14px
+  }
 }
 h4{
   font-weight: 600;
   font-size: 3rem;
+  @media all and (max-width: 1200px) {
+    font-size: 2.6rem;
+  }
+  @media all and (max-width: 1024px) {
+    font-size: 2.2rem;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 14px;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 12px
+  }
 }
 h5{
   font-weight: 600;

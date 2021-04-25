@@ -24,6 +24,34 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
     <header class="header">
+        <div class="fade-mobile"></div>
+        <div class="header__mobile-nav">
+            <div class="header__mobile-nav-cont">
+                <?php
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'menu-info',
+                        'menu_id'        => 'menu-info',
+                    )
+                );
+                ?>
+                <?php
+                wp_nav_menu(
+                    array(
+                        'theme_location' => 'menu-page',
+                        'menu_id'        => 'menu-page',
+                    )
+                );
+                ?>
+            </div>
+            <div class="header__nav-phone">
+                <a href="tel:<?php the_field('telefon_1', 'option'); ?>"><?php the_field('telefon_1', 'option'); ?></a>
+                <a href="tel:<?php the_field('telefon_2', 'option'); ?>"><?php the_field('telefon_2', 'option'); ?></a>
+            </div>
+            <div class="header__nav-button js-call red-button">
+                заказать звонок
+            </div>
+        </div>
         <div class="header__mobile-menu">
             <div class="header__burger burger__button">
                 <span></span>

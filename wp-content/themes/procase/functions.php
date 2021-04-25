@@ -523,3 +523,58 @@ function ajax_action_callback() {
 remove_action('load-update-core.php', 'wp_update_plugins');
 add_filter('pre_site_transient_update_plugins', create_function('$a', "return null;") );
 wp_clear_scheduled_hook('wp_update_plugins');
+
+// add core markup to woocommerce pages
+add_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper',10);
+
+// overwrite existing output content wrapper function
+function woocommerce_output_content_wrapper()
+{
+    echo '<div class="page-product-category procase-container">';
+}
+
+add_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper_cont',12);
+
+// overwrite existing output content wrapper function
+function woocommerce_output_content_wrapper_cont()
+{
+    echo '<div class="page-product-category_cont">';
+}
+
+add_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end',10);
+
+function woocommerce_output_content_wrapper_end()
+{
+    echo '</div><!-- Close Main -->';
+}
+
+add_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end_cont',12);
+
+function woocommerce_output_content_wrapper_end_cont()
+{
+    echo '</div><!-- Close Main -->';
+}
+
+add_action('woocommerce_before_checkout_form', 'woocommerce_output_content_wrapper');
+add_action('woocommerce_after_checkout_form', 'woocommerce_output_content_wrapper_end');
+
+
+
+//remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+//add_action('woocommerce_after_main_content', 'woocommerce_get_sidebar', 11);
+
+add_action('woocommerce_before_shop_loop', 'sidebar_container_before_loop', 5);
+function sidebar_container_before_loop(){
+    echo '<div class="sidebar_container_before_loop">';
+    echo '<div class="sidebar_container_before_loop_cont">';
+}
+
+add_action('woocommerce_after_shop_loop', 'sidebar_container_after_loop', 5);
+function sidebar_container_after_loop(){
+    echo '</div>';
+}
+
+add_action('woocommerce_after_shop_loop', 'sidebar_container_after_loop_end', 8);
+function sidebar_container_after_loop_end(){
+    echo '</div>';
+}
