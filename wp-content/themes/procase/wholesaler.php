@@ -30,35 +30,6 @@ get_header();
                     <div class="wholesaler__conditions-item">
                         <?php the_field('pervoe_opisanie_dlya_optovikov')?>
                     </div>
-                    <div class="wholesaler__conditions-item">
-                        <?php the_field('vtoroe_opisanie_dlya_optovikov')?>
-                    </div>
-                </div>
-            </section>
-            <section class="wholesaler__documents procase-container">
-                <h2 class="wholesaler__documents-title section-title">
-                    <?php the_field('zagolovok_dlya_bloka_perechnya')?>
-                </h2>
-                <div class="wholesaler__documents-content">
-                    <?php
-                    if( have_rows('chto_neobhodimo_imet') ):
-                        while( have_rows('chto_neobhodimo_imet') ) : the_row();
-                            $typetitle = get_sub_field('zagolovok_odnogo_trebovaniya');
-                            $typetext = get_sub_field('opisanie_odnogo_trebovaniya');
-                            ?>
-                            <div class="wholesaler__documents-item">
-                                <h3 class="wholesaler__documents-title">
-                                    <?php echo $typetitle;?>
-                                </h3>
-                                <div class="wholesaler__documents-desc">
-                                    <?php echo $typetext;?>
-                                </div>
-                            </div>
-                        <?php
-                        endwhile;
-                    else :
-                    endif;
-                    ?>
                 </div>
             </section>
             <section class="wholesaler__download">

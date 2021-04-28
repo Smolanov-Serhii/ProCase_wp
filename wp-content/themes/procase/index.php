@@ -681,7 +681,7 @@ get_header();
             <div class="consult__content">
                 <?php echo the_field('opisanie_bloka_konsultacziya', 2); ?>
             </div>
-            <div class="consult__lnk red-button js-reviewe">ОСТАВИТЬ ОТЗЫВ</div>
+            <div class="consult__lnk red-button js-call">Задать вопрос</div>
         </section>
     </main><!-- #main -->
 <?php

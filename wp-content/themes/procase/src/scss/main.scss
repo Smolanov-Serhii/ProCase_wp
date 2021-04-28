@@ -2934,14 +2934,9 @@ body{
       margin-bottom: 40px;
     }
     &-content{
-      display: flex;
-      justify-content: space-between;
-      @media all and (max-width: 768px) {
-        flex-wrap: wrap;
-      }
     }
     &-item{
-      width: calc(50% - 40px);
+      width: 100%;
       @media all and (max-width: 768px) {
         width: 100%;
         margin-bottom: 20px;
