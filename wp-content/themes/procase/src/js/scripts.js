@@ -140,11 +140,11 @@ jQuery(document).ready(function($) {
             lazy: true,
             observeParents: true,
             centeredSlides: true,
-            pagination: {
-                el: '.photogalery .swiper-pagination',
-                type: 'fraction',
-                clickable: true,
-            },
+            // pagination: {
+            //     el: '.photogalery .swiper-pagination',
+            //     type: 'fraction',
+            //     clickable: true,
+            // },
 
             navigation: {
                 nextEl: '.photogalery .swiper-button-next',
