@@ -1,11 +1,64 @@
 jQuery(document).ready(function($) {
-
-    window.onload = function () {
-        DublicateHeight();
+    if ($('.burger__button').length){
+        $('.burger__button').on('click', function(){
+            $('.header__mobile-nav').fadeToggle(300);
+            $('.fade-mobile').fadeToggle(300);
+            $('body').toggleClass('body-lock');
+        });
     }
-    $( window ).resize(function() {
-        DublicateHeight();
-    });
+
+    if ($('.mobile-filter').length){
+        $('.mobile-filter svg').click(function() {
+            if ($('.widget-area-fade').length){
+                $('.widget-area-fade').fadeIn(300);
+            }
+            $('.sidebar_container_before_loop .widget-area').fadeIn(300);
+        });
+    }
+    if ($('.filter-close-btn').length){
+        $('.filter-close-btn svg').click(function() {
+            $('.widget-area-fade').fadeOut(300);
+            $('.sidebar_container_before_loop .widget-area').fadeOut(300);
+        });
+    }
+
+    if ($('select').length){
+        $(function() {
+            if ($('.single-product').length){
+            } else {
+                $('select').selectric();
+            }
+        });
+    }
+
+    if ($('.test__slider').length){
+        $('.test__slider').slick({
+            infinite: false,
+            speed: 300,
+            lazyLoad: false,
+            adaptiveHeight: true,
+            arrows: false,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            swipe: false,
+            swipeToSlide: false,
+            touchMove: false,
+            draggable: false
+        });
+        $('.js-to-second, .js-to-third, .js-to-four').on('click', function() {
+            $('.test__slider').slick('slickNext');
+        });
+    }
+
+    if( $(window).width() >= 1401) {
+        window.onload = function () {
+            DublicateHeight();
+        }
+        $( window ).resize(function() {
+            DublicateHeight();
+        });
+    }
     function DublicateHeight(){
         var DonorElem = $(".header .container__bg").height();
         var WinHeight = $(window).innerHeight();
@@ -36,12 +89,18 @@ jQuery(document).ready(function($) {
             breakpoints: {
                 900: {
                     slidesPerView: 3,
+                    spaceBetween: 50,
                 },
                 500: {
-                    slidesPerView: 2.2,
+                    slidesPerView: 3,
+                    spaceBetween: 20,
                 },
-                300: {
-                    slidesPerView: 1.2,
+                400: {
+                    slidesPerView: 2.6,
+                    spaceBetween: 20,
+                },
+                240: {
+                    slidesPerView: 1.6,
                     spaceBetween: 10,
                 },
 
@@ -81,12 +140,6 @@ jQuery(document).ready(function($) {
             lazy: true,
             observeParents: true,
             centeredSlides: true,
-            // grabCursor: true,
-            // effect: 'coverflow',
-            // coverflowEffect:{
-            //     stretch: 50,
-            //     slideShadows: true,
-            // },
             pagination: {
                 el: '.photogalery .swiper-pagination',
                 type: 'fraction',
@@ -98,14 +151,21 @@ jQuery(document).ready(function($) {
                 prevEl: '.photogalery .swiper-button-prev',
             },
             breakpoints: {
-                900: {
+                1200: {
                     slidesPerView: 3,
                     spaceBetween: 30,
                 },
+                900: {
+                    slidesPerView: 2.6,
+                    spaceBetween: 20,
+                },
+                500: {
+                    slidesPerView: 2.4,
+                    spaceBetween: 10,
+                },
                 240: {
-                    slidesPerView: 1,
+                    slidesPerView: 1.4,
                     spaceBetween: 30,
-                    centeredSlides: false,
                 }
             }
         });
@@ -125,8 +185,9 @@ jQuery(document).ready(function($) {
                 {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
+                        slidesToShow: 1,
+                        centerMode: true,
+                        slidesToScroll: 1,
                         infinite: true,
                         dots: true
                     }
@@ -136,43 +197,52 @@ jQuery(document).ready(function($) {
     }
 
     if ($('.product-quantity').length){
-        $( ".product-quantity" ).each(function( index ) {
-            let elem = $(this).find('input').closest('.quantity');
-            $(elem).append('<div class="number"></div>')
-            $(elem).find('.number').append('<button class="number-minus" type="button">-</button>')
-            $(this).find('.number').append($(this).find('.input-text'));
-            $(elem).find('.number').append('<button class="number-plus" type="button">+</button>')
-        });
 
         $( ".number-plus, .number-minus" ).click(function() {
             $('td.actions .button').removeAttr('disabled');
         });
     }
-    if ($('.quantity div.number').length){
-        $( '.quantity div.number' ).each(function( index ) {
-            let col = $(this).find('input');
-            let plus = $(this).find('.number-plus');
-            let minus = $(this).find('.number-minus');
-            plus.click(function() {
-                col.val(parseInt(col.val())+1);
-                var check = col.val();
-                if (check > 1){
-                    minus.removeClass('disable');
-                }
-            });
-            minus.click(function() {
-                var check = col.val();
-                if (check > 1){
-                    col.val(parseInt(col.val())-1);
-                    minus.removeClass('disable');
-                } else {
-                    minus.addClass('disable');
-                }
+    function QuantityNum(){
+        if ($('.quantity').length){
 
+            $( '.quantity' ).each(function( index ) {
+                var col = $(this).find('input');
+                var plus = $(this).find('.quantity-arrow-plus');
+                var minus = $(this).find('.quantity-arrow-minus');
+                var total = col.val();
+                plus.click(function() {
+                    total++;
+                    col.val(total);
+                    $('button.button').removeAttr("disabled");
+                    if (total > 0){
+                        minus.removeClass('disable');
+                    }
+                    col.attr('value', total);
+                    $( '[name="update_cart"]' ).trigger( 'click' );
+                    $( '[name="update_wishlist"]' ).trigger( 'click' );
+                });
+                minus.click(function() {
+                    total--;
+                    col.val(total);
+                    $('button.button').removeAttr("disabled");
+                    if (total <= 0){
+                        minus.addClass('disable');
+                    } else {
+                        minus.removeClass('disable');
+                    }
+                    col.attr('value', total);
+                    $( '[name="update_cart"]' ).trigger( 'click' );
+                    $( '[name="update_wishlist"]' ).trigger( 'click' );
+                });
             });
-        });
+        }
+
     }
-    $('select').selectric();
+    QuantityNum();
+    $("body").bind("DOMSubtreeModified", function() {
+        QuantityNum();
+    });
+    // $('select').selectric();
 
     if ($('.product-categories').length){
         $('.product-categories .cat-parent').on('click', function(){
@@ -266,6 +336,79 @@ jQuery(document).ready(function($) {
                 }
             }
         });
+    }
+
+    if ($('#map').length){
+        var FirstCoord = 54.830517;
+        var SecondCoord = 56.086317;
+
+        var CenterFirstCoord = 54.830517;
+        var CenterSecondCoord = 56.086317;
+
+        ymaps.ready(function () {
+            var IconUrl = $('div').data('icon');
+            var myMap = new ymaps.Map('map', {
+                    center: [CenterFirstCoord, CenterSecondCoord],
+                    controls: [],
+                    zoom: 16
+                }, {
+                    searchControlProvider: true
+                }),
+
+                // Создаём макет содержимого.
+                MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+                    '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+                ),
+                myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+                }, {
+                    // Опции.
+                    // Необходимо указать данный тип макета.
+                    // Своё изображение иконки метки.
+                    iconImageHref: "",
+                    // Размеры метки.
+                    iconImageSize: [0, 0],
+                    // Смещение левого верхнего угла иконки относительно
+                    // её "ножки" (точки привязки).
+                }),
+                myPlacemarkWithContent = new ymaps.Placemark([FirstCoord, SecondCoord], {
+                }, {
+                    // Опции.
+                    // Необходимо указать данный тип макета.
+                    iconLayout: 'default#imageWithContent',
+                    // Своё изображение иконки метки.
+                    iconImageHref: IconUrl,
+                    // Размеры метки.
+                    iconImageSize: [72, 87],
+                    // Смещение левого верхнего угла иконки относительно
+                    // её "ножки" (точки привязки).
+                    iconImageOffset: [-40, -90],
+                    // Смещение слоя с содержимым относительно слоя с картинкой.
+                    iconContentOffset: [15, 15],
+                    // Макет содержимого.
+                    iconContentLayout: MyIconContentLayout
+                });
+            myMap.behaviors.disable('scrollZoom');
+            myMap.geoObjects
+                // .add(myPlacemark)
+                .add(myPlacemarkWithContent);
+        });
+    }
+
+    if ($('.woocommerce-checkout').length){
+        $('#billing_last_name_field').appendTo('.checkout__person');
+        $('#billing_first_name_field').appendTo('.checkout__person');
+        $('#billing_email_field').appendTo('.checkout__person');
+        $('#billing_phone_field').appendTo('.checkout__person');
+        $('#shipping_method').appendTo('.checkout__dostavka-select');
+        $('#billing_city_field').appendTo('.checkout__dostavka-select');
+        $('#billing_address_1_field').appendTo('.checkout__dostavka-select');
+        $('#house_field').appendTo('.checkout__dostavka-select');
+        $('#flat_field').appendTo('.checkout__dostavka-select');
+        $('#payment').appendTo('.checkout__pay-select');
+        $('#order_review').appendTo('.checkout__right-column');
+        $('.col2-set').appendTo('.checkout__pay-select');
+        $('#place_order').appendTo('.checkout__footer-btn');
+
     }
 
 });
