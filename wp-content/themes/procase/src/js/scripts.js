@@ -314,6 +314,11 @@ jQuery(document).ready(function($) {
             lazy: true,
             observeParents: true,
             centeredSlides: false,
+            // pagination: {
+            //     el: '.photogalery .swiper-pagination',
+            //     type: 'fraction',
+            //     clickable: true,
+            // },
             breakpoints: {
                 1200: {
                     slidesPerView: 4.5,
